@@ -1,0 +1,5 @@
+# Copy to key.properties (ignored by git) and fill in real release keystore credentials.
+storePassword=CHANGE_ME
+keyPassword=CHANGE_ME
+keyAlias=p2pchat
+storeFile=release-keystore.jks

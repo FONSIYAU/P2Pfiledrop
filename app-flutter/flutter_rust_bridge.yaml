@@ -1,0 +1,4 @@
+rust_input: crate::api
+rust_root: ../core-rust
+dart_output: lib/src/rust
+c_output: null

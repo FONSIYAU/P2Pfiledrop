@@ -1,0 +1,29 @@
+# Rust build artifacts
+/core-rust/target/
+/app-flutter/android/app/src/main/jniLibs/
+
+# Flutter build & generated caches
+/app-flutter/build/
+/app-flutter/.dart_tool/
+/app-flutter/.flutter-plugins
+/app-flutter/.flutter-plugins-dependencies
+/app-flutter/android/.gradle/
+/app-flutter/android/.kotlin/
+/app-flutter/android/app/.cxx/
+/app-flutter/android/local.properties
+/app-flutter/windows/flutter/ephemeral/
+
+# Packaged release bundles & stress test scratch artifacts
+/dist/
+/stress-test/
+
+# Logs & OS files
+*.log
+.DS_Store
+Thumbs.db
+
+# Android release signing credentials
+/app-flutter/android/key.properties
+*.jks
+*.keystore
+*.p12
