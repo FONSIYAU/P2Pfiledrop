@@ -22,7 +22,7 @@ class StringsUk extends AppStrings {
   String get localeCode => 'uk';
 
   @override
-  String get appTitle => 'BubbleDrop';
+  String get appTitle => 'P2Pfiledrop';
   @override
   String get appSubtitle => 'Наскрізно шифрований обмін';
   @override

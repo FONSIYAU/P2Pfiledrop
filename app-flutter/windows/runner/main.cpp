@@ -46,7 +46,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   Win32Window::Point origin(10, 10);
   Win32Window::Size size(1280, 720);
   const LANGID ui_lang = ::GetUserDefaultUILanguage();
-  const wchar_t* initial_title = L"BubbleDrop";
+  const wchar_t* initial_title = L"P2Pfiledrop";
   if (PRIMARYLANGID(ui_lang) == LANG_CHINESE) {
     const WORD sub = SUBLANGID(ui_lang);
     initial_title = (sub == SUBLANG_CHINESE_TRADITIONAL ||

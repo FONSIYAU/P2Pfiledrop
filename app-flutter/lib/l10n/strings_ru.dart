@@ -22,7 +22,7 @@ class StringsRu extends AppStrings {
   String get localeCode => 'ru';
 
   @override
-  String get appTitle => 'BubbleDrop';
+  String get appTitle => 'P2Pfiledrop';
   @override
   String get appSubtitle => 'Сквозное шифрование передачи';
   @override

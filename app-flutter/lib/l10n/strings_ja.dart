@@ -9,7 +9,7 @@ class StringsJa extends AppStrings {
   String get localeCode => 'ja';
 
   @override
-  String get appTitle => 'BubbleDrop';
+  String get appTitle => 'P2Pfiledrop';
   @override
   String get appSubtitle => 'エンドツーエンド暗号化転送';
   @override

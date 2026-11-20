@@ -22,7 +22,7 @@ class StringsPt extends AppStrings {
   String get localeCode => 'pt';
 
   @override
-  String get appTitle => 'BubbleDrop';
+  String get appTitle => 'P2Pfiledrop';
   @override
   String get appSubtitle => 'Transferência criptografada de ponta a ponta';
   @override

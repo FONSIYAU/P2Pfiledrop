@@ -22,7 +22,7 @@ class StringsEn extends AppStrings {
   String get localeCode => 'en';
 
   @override
-  String get appTitle => 'BubbleDrop';
+  String get appTitle => 'P2Pfiledrop';
   @override
   String get appSubtitle => 'End-to-End Encrypted Transfer';
   @override

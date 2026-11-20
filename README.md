@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="docs/bubbledrop_icon.png" width="112" alt="BubbleDrop Icon" />
+  <img src="docs/bubbledrop_icon.png" width="112" alt="P2Pfiledrop Icon" />
 </p>
 
-# BubbleDrop（文件随手传） · Android ↔ Windows
+# P2Pfiledrop（文件随手传） · Android ↔ Windows
 
 像聊天一样随手互传文件——去中心化、端到端加密（E2EE）、仿 Telegram / WhatsApp 风格的多房间私人传输与零知识家庭盲盒快递柜工具。
 

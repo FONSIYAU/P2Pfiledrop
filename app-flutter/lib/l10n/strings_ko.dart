@@ -9,7 +9,7 @@ class StringsKo extends AppStrings {
   String get localeCode => 'ko';
 
   @override
-  String get appTitle => 'BubbleDrop';
+  String get appTitle => 'P2Pfiledrop';
   @override
   String get appSubtitle => '종단간 암호화 전송';
   @override
