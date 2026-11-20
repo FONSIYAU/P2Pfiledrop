@@ -8,9 +8,9 @@
 
 Share files as effortlessly as chatting — decentralized, end-to-end encrypted (`BLAKE3` + `Ed25519`) multi-room P2P chat and resumable file transfer between Android and Windows.
 
-> **为什么手搓这个工具？** 说白了，实在看不惯某些所谓的 **BIG COMPANY**，连“在手机和电脑之间传个文件”这么简单的事都能做得又慢又难用——限速、强迫走云端、开个代理就失联、还塞满臃肿套路。既然指望不上他们，干脆自己手搓一个。
+> **为什么造这个工具？** 受够了臃肿软件在传个文件时也要限速、强制上传云端、开着代理就断连，于是决定自己手搓一个真正直接、好用的。
 >
-> *Why this exists:* Honestly, I got fed up watching so-called **BIG COMPANIES** somehow butcher something as basic as sending a file between your own phone and PC — throttling speeds, forcing cloud round-trips, breaking behind VPNs, and burying it under bloat. So I built one myself.
+> *Why this exists:* Tired of bloated apps throttling speeds, forcing cloud round-trips, and breaking behind VPNs just to move a file between your own phone and PC — so I built something direct that actually works.
 
 ---
 
