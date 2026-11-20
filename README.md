@@ -4,21 +4,20 @@
 
 # P2Pfiledrop（文件随手传） · Android ↔ Windows
 
-像聊天一样随手互传文件——去中心化、端到端加密（E2EE）、仿 Telegram / WhatsApp 风格的多房间私人传输与零知识家庭盲盒快递柜工具。
+像聊天一样随手互传文件——去中心化、端到端加密（E2EE）、仿 Telegram / WhatsApp 风格的多房间跨端即时聊天与 P2P 高速文件传输工具（Android ↔ Windows）。
 
-Share files as effortlessly as chatting — decentralized, end-to-end encrypted (`BLAKE3` + `Ed25519`) P2P chat and resumable file transfer between Android and Windows, with an optional 24/7 zero-knowledge Home Node relay mode.
+Share files as effortlessly as chatting — decentralized, end-to-end encrypted (`BLAKE3` + `Ed25519`) multi-room P2P chat and resumable file transfer between Android and Windows.
 
 ---
 
 ## 核心特性 / Highlights
 
 - **多通道自动无缝切换**：优先走 **USB 共享专线（`192.168.42.0/24`）** 与 **物理局域网（Wi-Fi / 网线，绕过代理 TUN 虚拟网卡）** `noq` QUIC 直传；跨网或纯 5G 环境下支持公网 IPv6 直连与 `iroh` P2P 打洞 / 加密中继接力（支持自定义 Relay URL）。
-- **USB 防抢网保护**：Windows 端自动检测并在诊断面板中支持一键修复 USB 共享网卡跃点数（`Metric = 5000`），避免插上旧手机充当 USB 专线时电脑宽带上网被劫持。
-- **同款 App 双身份（客户端 ⇄ 24h 盲盒快递柜）**：同一份客户端可一键切换为 **「24h 常驻盲盒快递柜节点」**（适合部署在闲置安卓旧手机上），零密钥零明文暂存密文分片，全员签收后自动销毁，并内置 `42420` 端口 USB HTTP 引导页分发安装包。
+- **VPN / 代理共存与 USB 防抢网保护**：底层直接绑定物理网卡（Windows `IP_UNICAST_IF` / Android `android_setsocknetwork`），开着 Clash / Mihomo / sing-box / WireGuard 也能局域网满速直连；Windows 端自动检测并支持一键修复 USB 共享网卡跃点数（`Metric = 5000`），避免手机 USB 共享网络劫持电脑宽带路由。
 - **Telegram / WhatsApp 风格交互与桌面常驻**：
-  - 支持 11 国语言界面、多房间密钥隔离、扫码入群、拖拽文件、`Ctrl+V` 粘贴截图/文件、大图缩放预览、实时速率（`MB/s`）与 ETA、Windows「在文件夹中显示」。
+  - 支持 11 国语言界面、多房间密钥隔离、扫码/邀请码配对、消息双向撤回、拖拽文件、`Ctrl+V` 粘贴截图/文件、大图缩放预览、按房间聚合查看文件、实时速率（`MB/s`）与 ETA、Windows「在文件夹中显示」。
   - Windows 原生系统托盘常驻（点 `×` 最小化到托盘、开机 `--minimized` 自启、气泡通知、单实例唤醒）。
-  - Android 支持系统“分享到本应用”、自定义保存目录 / MediaStore、1GB+ 断点续传与横竖屏自适应布局。
+  - Android 支持系统“分享到本应用”、自定义保存目录 / MediaStore、512 KiB+ 大文件分块断点续传（锁屏断网重连自动续传）与横竖屏自适应布局。
 
 ---
 

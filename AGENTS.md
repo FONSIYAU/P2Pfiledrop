@@ -6,7 +6,7 @@
 
 ## 1. Project Overview & Architecture
 
-Decentralized, end-to-end encrypted (E2EE), multi-room P2P chat and file transfer application (`Windows <-> Android`), featuring an optional **24/7 zero-knowledge Home Node ("家庭常驻盲盒快递柜")** mode that turns an idle Android phone into an offline encrypted relay locker.
+Decentralized, end-to-end encrypted (E2EE), multi-room P2P chat and file transfer application (`Windows <-> Android`).
 
 ### Directory Structure (Repository Root)
 - `core-rust/` — Shared Rust core engine compiled to `p2p_chat_core.dll` (Windows x64) and `libp2p_chat_core.so` (Android `arm64-v8a` / `x86_64`), exposed to Flutter via `flutter_rust_bridge`:
@@ -16,11 +16,11 @@ Decentralized, end-to-end encrypted (E2EE), multi-room P2P chat and file transfe
   - `src/net/usb_bootstrap.rs`: Built-in USB HTTP bootstrap server on port `42420` (`USB_BOOTSTRAP_HTTP_PORT = 42420`) for bare-metal client download and one-click USB auto-pairing (`/api/bootstrap-ticket`).
   - `src/crypto/room_cipher.rs` & `identity.rs`: Room-scoped Encrypt-then-MAC using BLAKE3 keyed XOF + MAC (`RoomKey`) and device cryptographic identities; pure Home Nodes store ciphertext envelopes/chunks without holding room keys.
   - `src/db/store.rs` & `src/transfer/`: SQLite local store, chunked resume (`chunker.rs`, filename sanitization & `validate_safe_id`), and sync/ACK/locker GC protocol (`sync_engine.rs`).
-- `app-flutter/` — Unified Flutter codebase (single APK / EXE supports both **Chat Client** and **24h Home Node Server** role switching):
-  - `lib/controllers/app_workspace_controller.dart`: State orchestrator (rooms, live transfer MB/s & ETA calculation, Windows tray shell sync & desktop notifications, device model/profile & avatar resolution, event-driven low-power Home Node handling).
+- `app-flutter/` — Unified Flutter client codebase (`Windows` + `Android`):
+  - `lib/controllers/app_workspace_controller.dart`: State orchestrator (rooms, live transfer MB/s & ETA calculation, Windows tray shell sync & desktop notifications, device model/profile & avatar resolution).
   - `lib/services/platform_bridge.dart` & `thumbnail_cache_service.dart`: MethodChannel (`dev.p2pchat/platform`) for Windows tray/auto-start/Explorer reveal, Android physical-NIC handles, Share Sheet intents, All-Files access, battery whitelist, hardware device model detection, and O(1) thumbnail cache.
   - `lib/l10n/`: 11-language localizations (`zh`, `en`, `zh_TW`, `ja`, `ko`, `es`, `fr`, `de`, `pt`, `ru`, `ar`).
-  - `lib/ui/`: Telegram/WhatsApp-styled workspace UI (`chat_page.dart`, `contacts_pane.dart`, `chat_list_pane.dart` with `CustomScrollView` landscape scrolling, `me_tab_view.dart`, `room_invite_sheet.dart`, `home_node_sheet.dart`, `oled_stealth_overlay.dart`).
+  - `lib/ui/`: Telegram/WhatsApp-styled workspace UI (`chat_page.dart`, `contacts_pane.dart`, `chat_list_pane.dart` with `CustomScrollView` landscape scrolling, `me_tab_view.dart`, `room_invite_sheet.dart`, `room_files_sheet.dart`).
   - `windows/runner/`: Win32 single-instance mutex (`Local\P2PChatTransferSingleInstanceMutex`), system tray icon/menu/balloon notifications, registry auto-start (`HKCU\Software\Microsoft\Windows\CurrentVersion\Run\P2PChatTransfer --minimized`), `explorer.exe /select`.
   - `android/app/src/main/kotlin/dev/p2pchat/p2p_chat_app/`: `MainActivity.kt` (`getDeviceModelName`, `ConnectivityManager.NetworkCallback`, background `ACTION_SEND` share receiver, All-Files & battery whitelist intents) and `HomeNodeForegroundService.kt`.
 - `build.ps1` — Master Windows + Android build & packaging script.
@@ -30,7 +30,7 @@ Decentralized, end-to-end encrypted (E2EE), multi-room P2P chat and file transfe
 
 ## 2. Release Status (`v1.0.0+1`)
 
-- **Core Transport & Multi-Room E2EE**: Dual-stack `iroh` + `noq`, physical-NIC pinning bypassing VPN/TUN virtual adapters, USB RNDIS (`192.168.42.0/24`) + Windows `InterfaceMetric=5000` protection, 24h zero-knowledge Home Node blind locker with auto-purge.
+- **Core Transport & Multi-Room E2EE**: Dual-stack `iroh` + `noq`, physical-NIC pinning bypassing VPN/TUN virtual adapters, USB RNDIS (`192.168.42.0/24`) + Windows `InterfaceMetric=5000` protection.
 - **v1.0.0 Hardening & Packaging**:
   - Permanent Android 4096-bit RSA release keystore support (`app-flutter/android/key.properties.example`), `--split-per-abi` (`arm64-v8a` / `x86_64`), `[profile.release]` LTO + symbol stripping.
   - Filename sanitization, path-traversal `validate_safe_id`, 5 MiB `engine.log` rotation, `Tokio` runtime guard in `revoke_message_for_everyone`.
