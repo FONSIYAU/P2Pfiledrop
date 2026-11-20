@@ -1,4 +1,4 @@
-# P2Pfiledrop (文件随手传) — Project Memory & Engineering Guide
+# P2Pfiledrop — Project Memory & Engineering Guide
 
 > Engineering architecture and contributor guidelines for this workspace. Keep it concise, accurate, and free of personal/machine-specific secrets or identifiers.
 

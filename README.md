@@ -2,11 +2,15 @@
   <img src="docs/bubbledrop_icon.png" width="112" alt="P2Pfiledrop Icon" />
 </p>
 
-# P2Pfiledrop（文件随手传） · Android ↔ Windows
+# P2Pfiledrop · Android ↔ Windows
 
 像聊天一样随手互传文件——去中心化、端到端加密（E2EE）、仿 Telegram / WhatsApp 风格的多房间跨端即时聊天与 P2P 高速文件传输工具（Android ↔ Windows）。
 
 Share files as effortlessly as chatting — decentralized, end-to-end encrypted (`BLAKE3` + `Ed25519`) multi-room P2P chat and resumable file transfer between Android and Windows.
+
+> **为什么手搓这个工具？** 说白了，实在看不惯某些所谓的 **BIG COMPANY**，连“在手机和电脑之间传个文件”这么简单的事都能做得又慢又难用——限速、强迫走云端、开个代理就失联、还塞满臃肿套路。既然指望不上他们，干脆自己手搓一个。
+>
+> *Why this exists:* Honestly, I got fed up watching so-called **BIG COMPANIES** somehow butcher something as basic as sending a file between your own phone and PC — throttling speeds, forcing cloud round-trips, breaking behind VPNs, and burying it under bloat. So I built one myself.
 
 ---
 
