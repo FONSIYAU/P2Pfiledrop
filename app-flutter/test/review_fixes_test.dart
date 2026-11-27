@@ -268,4 +268,31 @@ void main() {
       );
     }
   });
+
+  test('resolveLatestMonthFolder picks newest YYYY-MM subfolder and falls back cleanly', () {
+    final tmp = Directory.systemTemp.createTempSync('p2p_month_dir_');
+    try {
+      // No month folders yet -> falls back to root directory.
+      expect(PlatformBridge.resolveLatestMonthFolder(tmp.path), tmp.path);
+
+      // Non-month folders and files are ignored.
+      Directory('${tmp.path}${Platform.pathSeparator}misc').createSync();
+      Directory('${tmp.path}${Platform.pathSeparator}2026-11-extra').createSync();
+      File('${tmp.path}${Platform.pathSeparator}2026-12').writeAsStringSync('not a dir');
+      expect(PlatformBridge.resolveLatestMonthFolder(tmp.path), tmp.path);
+
+      // Picks the latest YYYY-MM directory.
+      Directory('${tmp.path}${Platform.pathSeparator}2025-12').createSync();
+      Directory('${tmp.path}${Platform.pathSeparator}2026-09').createSync();
+      final newest = Directory('${tmp.path}${Platform.pathSeparator}2026-11')
+        ..createSync();
+      expect(PlatformBridge.resolveLatestMonthFolder(tmp.path), newest.path);
+
+      // Missing root directory falls back to original path.
+      final missing = '${tmp.path}${Platform.pathSeparator}does_not_exist';
+      expect(PlatformBridge.resolveLatestMonthFolder(missing), missing);
+    } finally {
+      if (tmp.existsSync()) tmp.deleteSync(recursive: true);
+    }
+  });
 }

@@ -1044,7 +1044,9 @@ class AppWorkspaceController extends ChangeNotifier {
   }
 
   Future<void> openAutoReceiveFolder() async {
-    final targetDir = effectiveDisplaySaveDir;
+    final targetDir = PlatformBridge.resolveLatestMonthFolder(
+      effectiveDisplaySaveDir,
+    );
     final opened = await PlatformBridge.openFolder(targetDir);
     if (!opened) {
       _emitToast(_s.toastReceiveDirFallback(targetDir));

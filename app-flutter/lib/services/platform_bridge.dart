@@ -646,6 +646,36 @@ class PlatformBridge {
     } catch (_) {}
   }
 
+  static final RegExp _yearMonthFolderPattern = RegExp(r'^\d{4}-\d{2}$');
+
+  /// Returns the latest `YYYY-MM` subfolder inside [dirPath] if one exists,
+  /// otherwise returns [dirPath] unchanged.
+  static String resolveLatestMonthFolder(String dirPath) {
+    final clean = dirPath.trim();
+    if (clean.isEmpty) return clean;
+    try {
+      final root = Directory(clean);
+      if (!root.existsSync()) return clean;
+      String? latestName;
+      String? latestPath;
+      for (final entity in root.listSync(followLinks: false)) {
+        if (entity is! Directory) continue;
+        final parts =
+            entity.path.split(RegExp(r'[/\\]')).where((p) => p.isNotEmpty);
+        if (parts.isEmpty) continue;
+        final name = parts.last;
+        if (!_yearMonthFolderPattern.hasMatch(name)) continue;
+        if (latestName == null || name.compareTo(latestName) > 0) {
+          latestName = name;
+          latestPath = entity.path;
+        }
+      }
+      return latestPath ?? clean;
+    } catch (_) {
+      return clean;
+    }
+  }
+
   /// Opens [dirPath] in the OS file manager (Windows Explorer / Android Files).
   /// Creates the directory if needed and returns `true` when an external viewer opens.
   static Future<bool> openFolder(String dirPath) async {
